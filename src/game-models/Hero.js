@@ -1,24 +1,31 @@
-// Наш герой.
-
 class Hero {
-  constructor({ position }) {
-    this.skin = '🤠'; // можете использовать любые emoji '💃'
-    this.position = position;
+  constructor({ position, trackHeight }) {
+    this.skin = '💃'; // Смайлик девушки
+    this.position = { x: position, y: Math.floor(trackHeight / 2) };
   }
 
   moveLeft() {
-    // Идём влево.
-    this.position -= 1;
+    this.position.x -= 1;
   }
 
   moveRight() {
-    // Идём вправо.
-    this.position += 1;
+    this.position.x += 1;
+  }
+
+  moveUp() {
+    this.position.y -= 1;
+  }
+
+  moveDown() {
+    this.position.y += 1;
   }
 
   attack() {
-    // Атакуем.
-    this.boomerang.fly();
+    if (this.boomerang) {
+      this.boomerang.fly();
+    } else {
+      console.log('No boomerang equipped!');
+    }
   }
 
   die() {
