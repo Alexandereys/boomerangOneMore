@@ -1,29 +1,31 @@
-// Наш герой.
-
 class Hero {
-  constructor({ position }) {
-    this.skin = '🤠'; // можете использовать любые emoji '💃'
-    this.position = position;
+  constructor({ position, trackHeight, game }) {
+    this.skin = '💃'; // Смайлик девушки
+    this.position = { x: position, y: Math.floor(trackHeight / 2) };
+    this.game = game;
   }
 
   moveLeft() {
-    // Идём влево.
-    this.position -= 1;
+    this.position.x -= 1;
   }
 
   moveRight() {
-    // Идём вправо.
-    this.position += 1;
+    this.position.x += 1;
   }
 
-  attack() {
-    // Атакуем.
-    this.boomerang.fly();
+  moveUp() {
+    this.position.y -= 1;
+  }
+
+  moveDown() {
+    this.position.y += 1;
   }
 
   die() {
-    this.skin = '💀';
-    console.log('YOU ARE DEAD!💀');
+    this.skin = '👨‍👩‍👧';
+    console.log('ТЫ ПОПАЛА В СЕТИ!👨‍👩‍👧');
+    console.log('С ПРАЗДНИКОМ!');
+    this.game.endGame();
     process.exit();
   }
 }
